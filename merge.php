@@ -1,8 +1,8 @@
 <?php
 
-$base = new Imagick('over.png');
-$mask = new Imagick('mask.png');
-$over = new Imagick('base.png');
+$base = new Imagick('fotousuario.jpg');
+$mask = new Imagick('mascara.png');
+$over = new Imagick('overlay.png');
 
 // Setting same size for all images
 // $base->resizeImage(274, 275, Imagick::FILTER_LANCZOS, 1);
