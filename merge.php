@@ -6,7 +6,9 @@ $over = new Imagick('overlay.png');
 
 
 // Setting same size for all images
-// $base->resizeImage(274, 275, Imagick::FILTER_LANCZOS, 1);
+$base->resizeImage(800, 648, Imagick::FILTER_LANCZOS, 1);
+$mask->resizeImage(800, 648, Imagick::FILTER_LANCZOS, 1);
+$over->resizeImage(800, 648, Imagick::FILTER_LANCZOS, 1);
 
 // Copy opacity mask
 $base->compositeImage($mask, Imagick::COMPOSITE_DSTIN, 0, 0, Imagick::CHANNEL_ALPHA);
