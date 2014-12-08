@@ -13,7 +13,7 @@ $over = new Imagick('overlay.png');
 
 
 // Setting same size for all images
-// $base->resizeImage(1366, 1106, Imagick::FILTER_LANCZOS, 1);
+$base->resizeImage(621, 1106, Imagick::FILTER_LANCZOS, 1);
 $base->extentImage(1366, 1106,0,0);
 // extentImage ( int $width , int $height , int $x , int $y )
 // $mask->resizeImage(800, 648, Imagick::FILTER_LANCZOS, 1);
