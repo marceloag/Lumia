@@ -1,33 +1,36 @@
 <?php
-// $target_dir = "/uploads/";
-$target_file = basename($_FILES["fileToUpload"]["name"]);
-$uploadOk = 1;
-$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+
+//  SUBIDA DE ARCHIVO
+
+$target_file = basename($_FILES["fileToUpload"]["name"]); // Imagen de destino, conservo el nombre y lo subo al raiz de donde esta el archivo
 
 move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file);
 
+// SUBIDA DE ARCHIVO
+
 // $base = new Imagick('fotousuario.jpg');
-$base= new Imagick($target_file);
-$mask = new Imagick('mascara.png');
-$over = new Imagick('overlay.png');
+
+$base= new Imagick($target_file); // Tomo el archivo subido
+$mask = new Imagick('mascara.png'); // tomo la mascara de opacidad
+$over = new Imagick('overlay.png'); // tomo la capa que va encima
 
 
-// Setting same size for all images
-$base->resizeImage(621, 1106, Imagick::FILTER_LANCZOS, 1);
-$base->writeImage('resize.jpg');
-$base->extentImage(1366,1106,-745,0);
-$base->writeImage('extented.jpg');
-// extentImage ( int $width , int $height , int $x , int $y )
-// $mask->resizeImage(800, 648, Imagick::FILTER_LANCZOS, 1);
-// $over->resizeImage(800, 648, Imagick::FILTER_LANCZOS, 1);
+// Aseguro el tamaño del archivo de entrada
+$base->resizeImage(621, 1106, Imagick::FILTER_LANCZOS, 1); 
 
-// Copy opacity mask
+// Agrando el canvas, para alinear la imagen a la derecha
+$base->extentImage(1366,1106,-745,0); 
+
+// Aplico Mascara de Opacidad
 $base->compositeImage($mask, Imagick::COMPOSITE_DSTIN, 0, 0, Imagick::CHANNEL_ALPHA);
 
-// Add overlay
+// Aplico la capa superior
 $base->compositeImage($over, Imagick::COMPOSITE_DEFAULT, 0, 0);
 
+// Guardo el archivo compuesto
 $base->writeImage('output.jpg');
+
+// Muestro el archivo
 header("Content-Type: image/jpg");
 
 echo $base;
