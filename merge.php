@@ -1,7 +1,7 @@
 <?php
 
 $base = new Imagick('base.png');
-$mask = new Imagick('mascara.png');
+$mask = new Imagick('mask.png');
 $over = new Imagick('over.png');
 
 // Setting same size for all images
