@@ -15,6 +15,8 @@ if(isset($_POST["submit"])) {
     }
 }
 
+move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file);
+
 // $base = new Imagick('fotousuario.jpg');
 $base= new Imagick($target_file);
 $mask = new Imagick('mascara.png');
