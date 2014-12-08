@@ -4,6 +4,7 @@ $base = new Imagick('fotousuario.jpg');
 $mask = new Imagick('mascara.png');
 $over = new Imagick('overlay.png');
 
+
 // Setting same size for all images
 // $base->resizeImage(274, 275, Imagick::FILTER_LANCZOS, 1);
 
@@ -13,8 +14,9 @@ $base->compositeImage($mask, Imagick::COMPOSITE_DSTIN, 0, 0, Imagick::CHANNEL_AL
 // Add overlay
 $base->compositeImage($over, Imagick::COMPOSITE_DEFAULT, 0, 0);
 
-$base->writeImage('output.png');
-header("Content-Type: image/png");
+$base->writeImage('output.jpg');
+header("Content-Type: image/jpg");
 
 echo $base;
+
 ?>
